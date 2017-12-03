@@ -18,6 +18,7 @@
       <strike>{{item.task}}</strike>
       </li>
     </ul>
+    <div class="card card-body">
     <h2 id="addToTask">Add to the list...</h2>
       <form class="mt-3">
         <div class="form-group">
@@ -31,9 +32,22 @@
                 aria-label="task"
                 aria-describedby="task"
                 >
+              <div class="input-group-btn">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Action
+                     </button>
+                     <div class="dropdown-menu">
+                       <a class="dropdown-item" href="#">Action</a>
+                       <a class="dropdown-item" href="#">Another action</a>
+                       <a class="dropdown-item" href="#">Something else here</a>
+                       <div role="separator" class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="#">Separated link</a>
+                     </div>
+            </div>
           </div>
         </div>
       </form>
+    </div>
     </div>
 </template>
 
@@ -41,6 +55,8 @@
     export default {
         data() {
           return {
+            priorityLevelOptions: ['high', 'normal'],
+            priorityLevel: 'normal',
             task: '',
             list: [],
           }
@@ -61,7 +77,9 @@
           },
         },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.');
+            console.log($);
+            $('.dropdown-toggle').dropdown();
         }
     }
 </script>
