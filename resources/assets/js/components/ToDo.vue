@@ -1,20 +1,21 @@
 <template>
-<div id="backgroundImageContainer" class="container mt-5">
+<div id="backgroundImageContainer" class="container mt-1">
   <div class="row">
     <div class="col">
-      <div v-if="this.list.length < 1" class="card card-body opaqueBackground mt-5">
+      <h2 class="mt-3">The List</h2>
+      <div v-if="this.list.length < 1" class="card card-body opaqueBackground">
         <h1 class="text-center p-3">You don't have a list to-do started today, just add a task to create your daily to-do list!</h1>
       </div>
-      <ul class="list-group mt-5">
-        <li class="list-group-item mt-1" v-for="(value, key, index) in displayList">
+      <ul class="list-group mt-1">
+        <li class="list-group-item opaqueBackground mt-1" v-for="(value, key, index) in displayList">
           <span :class="{ 'highPriority' : value.isHighPriority, 'completed' : value.isCompleted }">{{value.task}}</span>
           <span @click="completedTask(value)"><i class="fa fa-lg fa-check-square-o"></i></span>
           <span class="float-right" @click="removeTask(index)"><small>remove task</small></span>
         </li>
       </ul>
-      <div class="card card-body mt-5 mb-5">
+      <div class="card card-body opaqueBackground mt-4 mb-5">
         <h2 id="addToTask">Add to the list...</h2>
-        <form class="mt-3">
+        <form>
           <div class="form-group">
             <div class="input-group input-group-lg">
               <span class="input-group-addon" @click="addToDo()">ADD</span>
@@ -66,11 +67,26 @@ export default {
     return {
       isHighPriority: false,
       task: '',
-      list: [
-        {task: 'brush teeth', isCompleted: false, isHighPriority: true},
-        {task: 'wash face', isCompleted: false, isHighPriority: false},
-        {task: 'pet puppy', isCompleted: true, isHighPriority: true},
-        {task: 'get dressed', isCompleted: false, isHighPriority: false}
+      list: [{
+          task: 'brush teeth',
+          isCompleted: false,
+          isHighPriority: true
+        },
+        {
+          task: 'wash face',
+          isCompleted: false,
+          isHighPriority: false
+        },
+        {
+          task: 'pet puppy',
+          isCompleted: true,
+          isHighPriority: true
+        },
+        {
+          task: 'get dressed',
+          isCompleted: false,
+          isHighPriority: false
+        }
       ],
       backgroundImageSrc: '',
     }
@@ -92,28 +108,27 @@ export default {
     },
   },
   computed: {
-  displayList() {
-    if(this.list) {
-      let order = _.orderBy(this.list, ['isCompleted', 'isHighPriority'], ['aced','desc']);
-      console.log(order);
-      return order;
+    displayList() {
+      if (this.list) {
+        let order = _.orderBy(this.list, ['isCompleted', 'isHighPriority'], ['aced', 'desc']);
+        console.log(order);
+        return order;
       } else {
-      return [];
+        return [];
       }
     },
-
   },
   mounted() {
     console.log('mounted');
-      let backgroundImage = axios.create({
-        baseURL: 'https://source.unsplash.com/',
-      });
-      backgroundImage.get('daily?nature').then(function(response) {
-        let backgroundImageProp = "url('" + response.request.responseURL + "')";
-        console.log(backgroundImageProp);
-        let element = document.getElementById("backgroundImageContainer");
-        element.setAttribute("style", "background-image:" + backgroundImageProp);
-      });
+    let backgroundImage = axios.create({
+      baseURL: 'https://source.unsplash.com/',
+    });
+    backgroundImage.get('daily?nature').then(function(response) {
+      let backgroundImageProp = "url('" + response.request.responseURL + "')";
+      console.log(backgroundImageProp);
+      let element = document.getElementById("backgroundImageContainer");
+      element.setAttribute("style", "background-image:" + backgroundImageProp);
+    });
   },
 }
 </script>

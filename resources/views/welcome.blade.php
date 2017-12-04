@@ -18,10 +18,14 @@
 
     </head>
     <body>
+      @php
+        use Carbon\Carbon;
+        $today = Carbon::today()->toFormattedDateString();
+      @endphp
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
           <span class="d-inline-block align-top"><i class="fa fa-2x fa-list-alt"></i></span>
-          To-Do List, get to it!
+          To-Do List {{ $today }}, Get to it! 
         </a>
             <a href="#addToTask">
             <span class="float-right">
@@ -41,5 +45,11 @@
             </div>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script type="text/javascript">
+          (function(){
+            emailjs.init("process.ENV.EMAILJS_ID");
+          })();
+        </script>
     </body>
 </html>
