@@ -50,6 +50,7 @@
       </div>
       <div class="card card-body opaqueBackground mt-4 mb-5">
         <h3 id="emailTasks">Email me this <i class="fa fa-mail-forward"></i></h3>
+        <h4 v-if="showEmailSuccess" class="text-info">Successfully Sent!</h4>
         <form>
           <div class="form-group">
             <div class="input-group input-group-lg">
@@ -72,6 +73,7 @@ export default {
     return {
       isHighPriority: false,
       task: '',
+      // prepopulated list for development only
       list: [{
           task: 'brush teeth',
           isCompleted: false,
@@ -95,6 +97,7 @@ export default {
       ],
       backgroundImageSrc: '',
       email: '',
+      showEmailSuccess: false,
     }
   },
   methods: {
@@ -134,8 +137,10 @@ export default {
       let templateId = "template_emailtodo";
       // basic validation, should be replaces with validation library
       if(this.email.length > 4) {
+        var self = this;
         emailjs.send(serviceId, templateId, templateParameters)
           .then(function(response) {
+            self.showEmailSuccess = true;
             console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
           }, function(err) {
             console.log("FAILED. error=", err);
