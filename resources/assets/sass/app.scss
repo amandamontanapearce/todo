@@ -3,8 +3,24 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+@import "variables.scss";
 
 // Bootstrap
-// @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.highPriority {
+  color: red;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+#backgroundImageContainer {
+  background-color: $text-color;
+}
+
+.opaqueBackground {
+  background-color: hsla(100, 100%, 100%, .5);
+  box-shadow: 1px 1px 1px $text-color;
+}
