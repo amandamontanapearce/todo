@@ -22,7 +22,7 @@
         <li class="list-group-item opaqueBackground mt-1" v-for="(value, key, index) in displayList">
           <span :class="{ 'highPriority' : value.isHighPriority, 'completed' : value.isCompleted }">{{value.task}}</span>
           <span class="px-3" @click="completedTask(value)"><i class="fa fa-lg fa-check-square-o"></i></span>
-          <span class="float-right" @click="removeTask(index)"><small>remove task</small></span>
+          <span class="float-right" @click="removeTask(value.task)"><small>remove task</small></span>
         </li>
       </ul>
       <div class="card card-body opaqueBackground mt-4 mb-5">
@@ -115,8 +115,9 @@ export default {
     completedTask(item) {
       item.isCompleted = true;
     },
-    removeTask(index) {
-      this.list.splice(index, 1);
+    removeTask(task) {
+      let taskIndex = this.list.indexOf( _.find( this.list, {'task': task}) );
+      this.list.splice(taskIndex, 1);
     },
     buildString() {
       let string = '<ul>';
