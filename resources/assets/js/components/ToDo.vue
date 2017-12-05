@@ -54,7 +54,7 @@
           <div class="form-group">
             <div class="input-group input-group-lg">
               <span class="input-group-addon text-info" @click="emailTasks()">SEND</span>
-              <input v-model="email" class="form-control" type="text" placeholder="email" aria-label="email" aria-describedby="email">
+              <input v-model="email" class="form-control" type="email" placeholder="email" aria-label="email" aria-describedby="email">
             </div>
           </div>
         </form>
@@ -99,12 +99,15 @@ export default {
   },
   methods: {
     addToDo() {
-      this.list.push({
-        'task': this.task,
-        'isCompleted': false,
-        'isHighPriority': this.isHighPriority,
-      });
-      this.task = '';
+      // basic validation, should be replaces with validation library
+      if (this.task.length > 0) {
+        this.list.push({
+          'task': this.task,
+          'isCompleted': false,
+          'isHighPriority': this.isHighPriority,
+        });
+        this.task = '';
+      }
     },
     completedTask(item) {
       item.isCompleted = true;
@@ -113,29 +116,31 @@ export default {
       this.list.splice(index, 1);
     },
     buildString() {
-    let string = '<ul>';
-    _.forEach(this.displayList, function(value) {
-      console.log(value)
-      if(value.isCompleted) {
-      string = string + '<li>' + value.task + ': done</li>';
-      } else {
-      string = string + '<li>' + value.task + ': not done yet ;) </li>';
-      }
-    });
-    return string + '</ul>';
+      let string = '<ul>';
+      _.forEach(this.displayList, function(value) {
+        if (value.isCompleted) {
+          string = string + '<li>' + value.task + ': done</li>';
+        } else {
+          string = string + '<li>' + value.task + ': not done yet ;) </li>';
+        }
+      });
+      return string + '</ul>';
     },
     emailTasks() {
-    let templateParameters = {
+      let templateParameters = {
         messageHTML: this.buildString(),
       };
-    let serviceId = "gmail";
-    let templateId = "template_emailtodo";
-    emailjs.send(serviceId, templateId, templateParameters)
-      .then(function(response) {
-        console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-        }, function(err) {
-        console.log("FAILED. error=", err);
-      });
+      let serviceId = "gmail";
+      let templateId = "template_emailtodo";
+      // basic validation, should be replaces with validation library
+      if(this.email.length > 4) {
+        emailjs.send(serviceId, templateId, templateParameters)
+          .then(function(response) {
+            console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+          }, function(err) {
+            console.log("FAILED. error=", err);
+          });
+      }
     },
   },
   computed: {
