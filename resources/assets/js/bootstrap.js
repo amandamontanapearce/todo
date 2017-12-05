@@ -1,3 +1,7 @@
+/* Instantiate Email.Js*/
+(function(){
+   emailjs.init("user_Iu2zdbdCykWhCya9fU4iP");
+})();
 
 window._ = require('lodash');
 

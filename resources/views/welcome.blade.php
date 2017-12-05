@@ -7,12 +7,13 @@
 
         <title>Daily Todo List</title>
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Icons -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -25,13 +26,8 @@
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">
           <span class="d-inline-block align-top"><i class="fa fa-2x fa-list-alt"></i></span>
-          To-Do List {{ $today }}, Get to it! 
+          To-Do List {{ $today }}, Get to it!
         </a>
-            <a href="#addToTask">
-            <span class="float-right">
-              <i class="fa fa-2x fa-plus"></i>
-            </span>
-            </a>
       </nav>
         <div id="app" class="container-fluid">
             <to-do></to-do>
@@ -44,12 +40,9 @@
                 </div>
             </div>
         </div>
-        <script src="{{ asset('js/app.js') }}"></script>
+
+        <!-- using email.js to email what will become non-loggedin to -->
         <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-        <script type="text/javascript">
-          (function(){
-            emailjs.init("process.ENV.EMAILJS_ID");
-          })();
-        </script>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
