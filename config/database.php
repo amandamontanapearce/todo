@@ -13,7 +13,7 @@ return [
     |
     */
 
-    // 'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'migrations' => 'migrations',
+    // 'migrations' => 'migrations',
 
     /*
     |--------------------------------------------------------------------------
