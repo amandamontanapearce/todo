@@ -1,5 +1,5 @@
 <template>
-<div id="backgroundImageContainer" class="container mt-1">
+<div id="backgroundImageContainer" class="container mt-2">
   <div class="row">
     <div class="col">
       <h2 class="mt-3">
@@ -21,7 +21,7 @@
       <ul class="list-group mt-1">
         <li class="list-group-item opaqueBackground mt-1" v-for="(value, key, index) in displayList">
           <span :class="{ 'highPriority' : value.isHighPriority, 'completed' : value.isCompleted }">{{value.task}}</span>
-          <span @click="completedTask(value)"><i class="fa fa-lg fa-check-square-o"></i></span>
+          <span class="px-3" @click="completedTask(value)"><i class="fa fa-lg fa-check-square-o"></i></span>
           <span class="float-right" @click="removeTask(index)"><small>remove task</small></span>
         </li>
       </ul>
@@ -136,7 +136,7 @@ export default {
       let serviceId = "gmail";
       let templateId = "template_emailtodo";
       // basic validation, should be replaces with validation library
-      if(this.email.length > 4) {
+      if (this.email.length > 4) {
         var self = this;
         emailjs.send(serviceId, templateId, templateParameters)
           .then(function(response) {
