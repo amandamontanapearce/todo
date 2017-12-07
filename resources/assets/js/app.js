@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('to-do', require('./components/ToDo.vue'));
+Vue.component('icon-nav', require('./components/IconNav.vue'));
 
 const app = new Vue({
     el: '#app'

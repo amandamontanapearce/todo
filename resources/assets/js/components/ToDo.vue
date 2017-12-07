@@ -4,16 +4,7 @@
     <div class="col">
       <h2 class="mt-3">
       The List
-      <a href="#addToTask">
-        <span class="float-right">
-          <i class="fa fa-plus px-3 text-info"></i>
-        </span>
-      </a>
-      <a href="#emailTasks">
-        <span class="float-right">
-          <i class="fa fa-envelope px-3 text-info"></i>
-        </span>
-      </a>
+      <icon-nav></icon-nav>
       </h2>
       <div v-if="this.list.length < 1" class="card card-body opaqueBackground">
         <h1 class="text-center p-3">You don't have a list to-do started today, just add a task to create your daily to-do list!</h1>
@@ -61,7 +52,7 @@
         </form>
       </div>
       <div class="card card-body opaqueBackground mt-4 mb-5">
-        <h3>How are you doing? List statistics. <i class="fa fa-line-chart"></i></h3>
+        <h3 id="analytics">How are you doing? List statistics. <i class="fa fa-line-chart"></i></h3>
         <p>You've complete {{percentComplete}}% of your tasks! <span v-if="percentComplete > 90"> Great Job!</span></p>
         <p>{{percentHighPriority}}% of your tasks are high priority.</p>
       </div>
