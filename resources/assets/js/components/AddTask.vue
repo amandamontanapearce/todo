@@ -9,20 +9,29 @@
         </div>
       </div>
       <div class="form-group">
-        <div class="form-check form-check-inline">
+        <div class="form-check form-check-inline radio-toggle">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" value="true" v-model="isHighPriority">high
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" value="false" v-model="isHighPriority">normal
+            <input class="form-check-input" type="checkbox" v-model="isHighPriority"> This task is high Priority.
           </label>
         </div>
       </div>
     </form>
   </div>
 </template>
+
+<style>
+/*div.radio-toggle label input{
+  display: none;
+}*/
+
+.radio-toggle {
+
+}
+
+.radio-toggle-selected {
+
+}
+</style>
 
 <script>
   export default {
