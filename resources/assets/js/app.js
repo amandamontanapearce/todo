@@ -19,6 +19,7 @@ Vue.component('to-do', require('./components/ToDo.vue'));
 Vue.component('icon-nav', require('./components/IconNav.vue'));
 Vue.component('list', require('./components/List.vue'));
 Vue.component('list-analytics', require('./components/ListAnalytics.vue'));
+Vue.component('add-task', require('./components/AddTask.vue'));
 
 const app = new Vue({
     el: '#app'
