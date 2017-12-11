@@ -9735,3 +9735,7 @@ a.text-dark:hover {
           box-shadow: 1px 1px 1px #636b6f;
 }
 
+.clickable {
+  cursor: pointer;
+}
+

@@ -1,11 +1,11 @@
 <template>
   <div class="card card-body opaqueBackground mt-4 mb-5">
-    <h3 id="emailTasks">Email me this <i class="fa fa-mail-forward"></i></h3>
+    <h3 id="emailTasks"><i class="fa fa-envelope"></i> Email me this</h3>
     <h4 v-if="showEmailSuccess" class="text-info">Successfully Sent!</h4>
     <form>
       <div class="form-group">
         <div class="input-group input-group-lg">
-          <span class="input-group-addon text-info" @click="emailTasks()">SEND</span>
+          <span class="input-group-addon text-info clickable" @click="emailTasks()">SEND</span>
           <input v-model="email" class="form-control" type="email" placeholder="email" aria-label="email" aria-describedby="email">
         </div>
       </div>

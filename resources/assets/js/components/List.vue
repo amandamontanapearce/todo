@@ -6,8 +6,8 @@
     <ul class="list-group mt-1">
       <li class="list-group-item opaqueBackground mt-1" v-for="(value, key, index) in displayList">
         <span :class="{ 'highPriority' : value.isHighPriority, 'completed' : value.isCompleted }">{{value.task}}</span>
-        <span class="px-3" @click="completedTask(value)"><i class="fa fa-lg fa-check-square-o"></i></span>
-        <span class="float-right" @click="removeTask(value.task)"><small>remove task</small></span>
+        <span class="px-3 clickable" @click="completedTask(value)"><i class="fa fa-lg fa-check-square-o"></i></span>
+        <span class="float-right clickable" @click="removeTask(value.task)"><small>remove task</small></span>
       </li>
     </ul>
   </div>

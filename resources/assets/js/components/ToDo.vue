@@ -2,7 +2,7 @@
 <div id="backgroundImageContainer" class="container mt-2">
   <div class="row">
     <div class="col">
-      <h2 class="mt-3">
+      <h2 class="mt-3 text-info">
         The List
 
         <icon-nav></icon-nav>

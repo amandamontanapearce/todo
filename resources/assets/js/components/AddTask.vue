@@ -1,10 +1,10 @@
 <template>
   <div class="card card-body opaqueBackground mt-4 mb-5">
-    <h2 id="addToTask">Add to the list...</h2>
+    <h2 id="addToTask"><i class="fa fa-plus"></i> Add to the list...</h2>
     <form>
       <div class="form-group">
         <div class="input-group input-group-lg">
-          <span class="input-group-addon text-info" @click="addToDo()">ADD</span>
+          <span class="input-group-addon text-info clickable" @click="addToDo()">ADD</span>
           <input v-model="task" class="form-control" type="text" placeholder="task" aria-label="task" aria-describedby="task">
         </div>
       </div>
